@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Controlador para la aplicación EjercicioK que gestiona la representación
+ * de un reloj digital utilizando imágenes para mostrar las horas, minutos y segundos.
+ */
 public class EjercicioKController {
 
     @FXML
@@ -24,10 +28,17 @@ public class EjercicioKController {
 
     private final Timer timer = new Timer();
 
+    /**
+     * Metodo inicializador que se llama al cargar el FXML.
+     * Comienza el proceso de actualización del reloj.
+     */
     public void initialize() {
         startClock();
     }
 
+    /**
+     * Inicia un temporizador que actualiza el reloj cada segundo.
+     */
     private void startClock() {
         TimerTask task = new TimerTask() {
             @Override
@@ -38,6 +49,9 @@ public class EjercicioKController {
         timer.scheduleAtFixedRate(task, 0, 1000); // Actualiza cada segundo
     }
 
+    /**
+     * Actualiza la representación del reloj con la hora actual.
+     */
     private void updateClock() {
         LocalDateTime now = LocalDateTime.now();
 
@@ -50,6 +64,11 @@ public class EjercicioKController {
         updateSecondImages(segundos);
     }
 
+    /**
+     * Actualiza las imágenes que representan las horas.
+     *
+     * @param horas Las horas actuales a mostrar en el reloj.
+     */
     private void updateHourImages(int horas) {
         int leftHour = horas / 10; // Horas a la izquierda
         int rightHour = horas % 10; // Horas a la derecha
@@ -58,6 +77,11 @@ public class EjercicioKController {
         ivHorasDerecha.setImage(getImageForNumber(rightHour));
     }
 
+    /**
+     * Actualiza las imágenes que representan los minutos.
+     *
+     * @param minutos Los minutos actuales a mostrar en el reloj.
+     */
     private void updateMinuteImages(int minutos) {
         int leftMinute = minutos / 10; // Minutos a la izquierda
         int rightMinute = minutos % 10; // Minutos a la derecha
@@ -66,6 +90,11 @@ public class EjercicioKController {
         ivMinutosDerecha.setImage(getImageForNumber(rightMinute));
     }
 
+    /**
+     * Actualiza las imágenes que representan los segundos.
+     *
+     * @param segundos Los segundos actuales a mostrar en el reloj.
+     */
     private void updateSecondImages(int segundos) {
         int leftSecond = segundos / 10; // Segundos a la izquierda
         int rightSecond = segundos % 10; // Segundos a la derecha
@@ -74,6 +103,12 @@ public class EjercicioKController {
         ivSegundosDerecha.setImage(getImageForNumber(rightSecond));
     }
 
+    /**
+     * Obtiene la imagen correspondiente a un número dado.
+     *
+     * @param number El número para el que se quiere obtener la imagen (0-9).
+     * @return La imagen correspondiente al número.
+     */
     private javafx.scene.image.Image getImageForNumber(int number) {
         String imageName = switch (number) {
             case 0 -> "ZERO.png";
