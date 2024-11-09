@@ -11,7 +11,7 @@ import java.io.IOException;
  * Clase principal de la aplicación que inicia la interfaz gráfica utilizando JavaFX.
  * Esta clase extiende {@link Application} y sirve como el punto de entrada para la aplicación.
  */
-public class HelloApplication extends Application {
+public class EjercicioKApp extends Application {
 
     /**
      * Metodo que se llama al iniciar la aplicación.
@@ -22,7 +22,7 @@ public class HelloApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EjercicioK.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(EjercicioKApp.class.getResource("EjercicioK.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 465, 400);
         stage.setTitle("Ejercicio K!");
         stage.setScene(scene);
